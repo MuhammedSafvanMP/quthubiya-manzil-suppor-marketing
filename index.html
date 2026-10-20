@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quthubiya Manzil · Support & Marketing</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ===== GLOBAL RESET & THEME ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f9f0; /* soft off-white with a hint of green */
+      color: #1e2e1e;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Islamic green palette */
+    :root {
+      --primary: #1e6b3e;    /* deep green */
+      --primary-light: #2a8e55;
+      --primary-soft: #e1f0e6;
+      --accent-gold: #c9a45c;
+      --dark: #0e2b1a;
+      --gray-bg: #f4faf5;
+      --card-bg: #ffffff;
+      --shadow: 0 10px 30px -10px rgba(0, 40, 20, 0.15);
+    }
+
+    /* ===== SHARED STYLES ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header */
+    .app-header {
+      background: var(--primary);
+      color: white;
+      padding: 18px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border-bottom: 3px solid var(--accent-gold);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      background: white;
+      color: var(--primary);
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-icon i {
+      color: var(--primary);
+    }
+
+    .app-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .app-name span {
+      color: var(--accent-gold);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #e6f3ea;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 30px;
+      transition: all 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+    }
+
+    .nav-links a.active {
+      background: var(--accent-gold);
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    /* main wrapper */
+    .main-content {
+      flex: 1;
+      padding: 48px 0 64px;
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: var(--accent-gold);
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+
+    .subhead {
+      font-size: 1.15rem;
+      color: #3b5e4a;
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    /* cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      padding: 30px 24px;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(30, 107, 62, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -14px rgba(20, 70, 30, 0.2);
+    }
+
+    .feature-icon {
+      background: var(--primary-soft);
+      color: var(--primary);
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+
+    .feature-card p {
+      color: #2b4a38;
+      font-size: 1rem;
+    }
+
+    /* support page specific */
+    .support-hero {
+      background: linear-gradient(135deg, #f0f9f2 0%, #ffffff 100%);
+      border-radius: 40px;
+      padding: 48px 40px;
+      margin-bottom: 48px;
+      border: 1px solid #d7e8dc;
+      box-shadow: 0 10px 25px -10px rgba(30, 107, 62, 0.1);
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 40px 0 20px;
+    }
+
+    .contact-item {
+      flex: 1 1 240px;
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 4px 18px rgba(0, 40, 20, 0.06);
+      border-left: 6px solid var(--primary);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: 0.15s;
+    }
+
+    .contact-item i {
+      font-size: 1.8rem;
+      color: var(--primary);
+      width: 40px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .contact-item h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .contact-item p, .contact-item a {
+      color: #2f523f;
+      text-decoration: none;
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .contact-item a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    /* form (simple) */
+    .simple-form {
+      background: white;
+      border-radius: 32px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-top: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid #d0e0d4;
+      border-radius: 60px;
+      font-size: 1rem;
+      background: #fafefa;
+      transition: 0.2s;
+    }
+
+    .form-group textarea {
+      border-radius: 28px;
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(30, 107, 62, 0.1);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 16px 34px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 60px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: 0.2s;
+      box-shadow: 0 8px 20px -6px rgba(30, 107, 62, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #15582f;
+      transform: scale(1.02);
+    }
+
+    /* marketing hero */
+    .marketing-hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 50px;
+      margin-bottom: 64px;
+    }
+
+    .hero-text {
+      flex: 1 1 380px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 i {
+      color: var(--accent-gold);
+      font-size: 2.8rem;
+      margin-right: 8px;
+    }
+
+    .hero-text p {
+      font-size: 1.25rem;
+      color: #2b4a38;
+      margin-bottom: 32px;
+    }
+
+    .hero-visual {
+      flex: 1 1 300px;
+      background: var(--primary-soft);
+      border-radius: 48px;
+      padding: 38px 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid #c2dfcc;
+    }
+
+    .hero-visual i {
+      font-size: 7rem;
+      color: var(--primary);
+      opacity: 0.9;
+    }
+
+    .hero-visual .badge {
+      background: var(--accent-gold);
+      color: var(--dark);
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 60px;
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* footer */
+    .app-footer {
+      background: var(--dark);
+      color: #c8e0d0;
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.95rem;
+      border-top: 3px solid var(--accent-gold);
+    }
+
+    .footer-links a {
+      color: #b8dac4;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 400;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* utilities */
+    .text-center {
+      text-align: center;
+    }
+
+    .mt-4 {
+      margin-top: 28px;
+    }
+
+    .mb-2 {
+      margin-bottom: 12px;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .app-name {
+        font-size: 1.5rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .hero-text h1 {
+        font-size: 2.4rem;
+      }
+      .support-hero {
+        padding: 30px 22px;
+      }
+      .simple-form {
+        padding: 24px;
+      }
+      .contact-item {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="app-header">
+    <div class="container header-inner">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <img width="50px" src="./img/splash-logo.png" alt="logo">
+        </div>
+        <div class="app-name">Quthubiya <span>Manzil</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="#" class="active" id="nav-support"><i class="fas fa-life-ring"></i> Support</a>
+        <a href="#" id="nav-marketing"><i class="fas fa-star"></i> Marketing</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT (two pages, shown via CSS) ===== -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- ========== SUPPORT PAGE (visible by default) ========== -->
+      <div id="support-page">
+        <div class="support-hero">
+          <h2 class="section-title">We’re here to help</h2>
+          <p class="subhead" style="margin-bottom:0;">
+            Need assistance with Quthubiya Manzil? Our support team is ready to help you with any questions, 
+            technical issues, or feedback about the app.
+          </p>
+        </div>
+
+        <!-- contact methods -->
+        <div class="contact-methods">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email support</h4>
+              <p><a href="mailto:zorrowtech@gmail.com">zorrowtech@gmail.com</a></p>
+              <p style="font-size:0.9rem; color:#4a6b58;">We reply within 24 hours</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <h4>Phone</h4>
+              <p><a href="tel:+">+91 9400517720</a></p>
+              <p style="font-size:0.9rem; color:#4a6b58;">Mon–Fri, 9am–6pm (EST)</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Zorrow Tech IT Solutions PVT LTD</h4>
+              <p>Malappuram, Kerala, India 676505</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- simple contact form -->
+        <div class="simple-form">
+          <h3 style="font-size:1.6rem; color:var(--dark); margin-bottom:8px;">Send us a message</h3>
+          <p style="color:#4a6b58; margin-bottom:28px;">Fill the form and we’ll get back to you.</p>
+          <form id="supportForm" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent');">
+            <div class="form-group">
+              <label>Your name</label>
+              <input type="text" placeholder="e.g., Ahmed Khan" required>
+            </div>
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Describe your issue or question..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Send message</button>
+          </form>
+        </div>
+
+        <!-- FAQ hint -->
+        <div style="margin-top:48px; background: #ffffffd6; border-radius: 28px; padding: 24px 30px; border: 1px solid #d7e8dc;">
+          <h3 style="font-size:1.3rem; display:flex; align-items:center; gap:10px;"><i class="fas fa-question-circle" style="color:var(--primary);"></i> Quick answers</h3>
+          <p style="margin-top:8px;">Check our <a href="#" style="color:var(--primary); font-weight:500;">FAQ page</a> or the in‑app help center for instant solutions.</p>
+        </div>
+      </div>
+
+      <!-- ========== MARKETING PAGE (hidden initially) ========== -->
+      <div id="marketing-page" style="display: none;">
+        <!-- hero -->
+        <div class="marketing-hero">
+          <div class="hero-text">
+            <h1><i class="fas fa-mosque"></i> Quthubiya Manzil</h1>
+            <p>Your daily companion for Islamic prayer times, Qibla, and spiritual growth – designed with peace and simplicity.</p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+              <a href="#" class="btn-primary" style="background: var(--primary);"><i class="fab fa-apple"></i> Download on App Store</a>
+              <a href="#" class="btn-primary" style="background: #2a8e55;"><i class="fab fa-google-play"></i> Get it on Google Play</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <i class="fas fa-mobile-alt"></i>
+            <div class="badge"><i class="fas fa-star"></i> 4.9 ★ · 10k+ downloads</div>
+          </div>
+        </div>
+
+        <!-- features -->
+        <h2 class="section-title" style="margin-top:20px;">Key features</h2>
+        <p class="subhead">Everything you need to stay connected to your faith, beautifully organised.</p>
+        <div class="card-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-clock"></i></div>
+            <h3>Accurate prayer times</h3>
+            <p>Get precise Salah times based on your location, with multiple calculation methods and notifications.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-compass"></i></div>
+            <h3>Qibla compass</h3>
+            <p>Find the direction of the Kaaba effortlessly with our smooth, calibrated Qibla compass.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+            <h3>Quran & Duas</h3>
+            <p>Read the Quran, browse daily supplications, and listen to beautiful recitations.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-bell"></i></div>
+            <h3>Smart adhan alerts</h3>
+            <p>Customisable notifications for each prayer, so you never miss a moment of worship.</p>
+          </div>
+        </div>
+
+        <!-- Islamic touch / call to action -->
+        <div style="background: var(--primary-soft); border-radius: 40px; padding: 40px 48px; margin: 50px 0 20px; text-align: center; border: 1px solid #cbe0d2;">
+          <h3 style="font-size: 2rem; color: var(--dark); font-weight: 700;">Begin your spiritual journey</h3>
+          <p style="font-size: 1.2rem; max-width: 600px; margin: 16px auto 28px; color: #1e4a2e;">Quthubiya Manzil is free to download and use. Experience a calmer, more connected daily routine.</p>
+          <a href="#" class="btn-primary" style="background: var(--primary); font-size: 1.2rem; padding: 18px 48px;"><i class="fas fa-download"></i> Install now</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="app-footer">
+    <div class="container">
+      <p>© 2026 Quthubiya Manzil · Zorrow Tech. All rights reserved.</p>
+      <p class="footer-links" style="margin-top: 12px;">
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Use</a> |
+        <a href="#" id="footer-support">Support</a> |
+        <a href="#" id="footer-marketing">Marketing</a>
+      </p>
+      <p style="margin-top: 16px; font-size: 0.85rem; color: #88b39a;">Built with <i class="fas fa-heart" style="color: var(--accent-gold);"></i> for the Ummah</p>
+    </div>
+  </footer>
+
+  <!-- ===== SIMPLE PAGE SWITCHER ===== -->
+  <script>
+    (function() {
+      // Elements
+      const supportPage = document.getElementById('support-page');
+      const marketingPage = document.getElementById('marketing-page');
+      const navSupport = document.getElementById('nav-support');
+      const navMarketing = document.getElementById('nav-marketing');
+      const footerSupport = document.getElementById('footer-support');
+      const footerMarketing = document.getElementById('footer-marketing');
+
+      // Helper to show support
+      function showSupport() {
+        supportPage.style.display = 'block';
+        marketingPage.style.display = 'none';
+        navSupport.classList.add('active');
+        navMarketing.classList.remove('active');
+      }
+
+      // Helper to show marketing
+      function showMarketing() {
+        supportPage.style.display = 'none';
+        marketingPage.style.display = 'block';
+        navMarketing.classList.add('active');
+        navSupport.classList.remove('active');
+      }
+
+      // Event listeners – header
+      navSupport.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSupport();
+      });
+
+      navMarketing.addEventListener('click', (e) => {
+        e.preventDefault();
+        showMarketing();
+      });
+
+      // Footer links (same behaviour)
+      if (footerSupport) {
+        footerSupport.addEventListener('click', (e) => {
+          e.preventDefault();
+          showSupport();
+        });
+      }
+      if (footerMarketing) {
+        footerMarketing.addEventListener('click', (e) => {
+          e.preventDefault();
+          showMarketing();
+        });
+      }
+
+      // Default: support page visible, marketing hidden
+      // (already set in HTML, but ensure classes match)
+      // Ensure nav classes reflect initial state
+      navSupport.classList.add('active');
+      navMarketing.classList.remove('active');
+    })();
+  </script>
+</body>
+</html>
